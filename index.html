@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="WebesChad.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chads-Vasc Score Kalkulátor</title>
+</head>
+
+<script>
+
+function calculate () {
+
+    var nem = document.getElementById("nem").value;
+    var kor = document.getElementById("Életkor").value;
+    var stroke = document.getElementById("stroke").value;
+    var HF = document.getElementById("szívelégtelenség").value;
+    var BP = document.getElementById("BP").value;
+    var vasz = document.getElementById("vasz").value;
+    var DM = document.getElementById("DM").value;
+
+    if (nem === "" || kor === "" || stroke === "" || HF === "" || BP === "" || vasz === "" || DM === "") {
+        alert("Kérjük ne hagyjon üresen semmit");
+        return;
+    }
+
+    var osszeg = parseInt(nem)+parseInt(kor)+parseInt(stroke)+parseInt(HF)+parseInt(BP)+parseInt(vasz)+parseInt(DM);
+
+    document.getElementById("eredmény").style.display='';
+    document.getElementById("pont").innerHTML=osszeg;
+    document.getElementById("formtest").style.display="none"
+
+
+
+}
+
+
+</script>
+
+<body>
+
+    <div id="formtest">
+    <form onsubmit="return false">
+
+        <label for="nem">Neme:</label>
+            <select name="nem" id="nem" required>
+                <option value="" disabled selected hidden>Kérjük válasszon!</option>
+                <option value="0">Férfi</option>
+                <option value="1">Nő</option>
+            </select>
+            <br>
+            <label for="kor">Életkora:</label>
+            <select name="Életkor" id="Életkor" required>
+                <option value="" disabled selected hidden>Kérjük válasszon!</option>
+                <option value="0">65 alatt</option>
+                <option value="1">65 és 75 között</option>
+                <option value="2">75 felett</option>
+            </select>
+            <br>
+            <label for="stroke">Stroke/TIA az anamnézisben:</label>
+            <select name="stroke" id="stroke" required>
+                <option value="" disabled selected hidden>Kérjük válasszon!</option>
+                <option value="0">nem</option>
+                <option value="2">igen</option>
+            </select>
+            <br>
+            <label for="szívelégtelenség">Kórnikus szívelégtelenség</label>
+            <select name="szívelégtelenség" id="szívelégtelenség" required>
+                <option value="" disabled selected hidden>Kérjük válasszon!</option>
+                <option value="0">nem</option>
+                <option value="1">igen</option>
+            </select>
+            <br>
+            <label for="BP">Magas vérnyomás</label>
+            <select name="BP" id="BP" required>
+                <option value="" disabled selected hidden>Kérjük válasszon!</option>
+                <option value="0">nem</option>
+                <option value="1">igen</option>
+            </select>
+            <br>
+            <label for="vasz">Vaszkuláris érbetegség:</label>
+            <select name="vasz" id="vasz" required>
+                <option value="" disabled selected hidden>Kérjük válasszon!</option>
+                <option value="0">nem</option>
+                <option value="1">igen</option>
+            </select>
+        <br>
+            <label for="DM">Cukorbetegség:</label>
+            <select name="DM" id="DM" required>
+                <option value="" disabled selected hidden>Kérjük válasszon!</option>
+                <option value="0">nem</option>
+                <option value="1">igen</option>
+            </select>
+        
+        <br>
+            <button id="szamolas" onclick="calculate()">Számolás</button>
+    </form>
+</div>
+    <div style="display: none;" class="eredmény" id="eredmény">
+        <center>
+        <h1>
+            A Chads-Vasc pontszám:
+        </h1>
+        <h2 id="pont" class="pont">
+            <!--ide kerül be az eredmény-->
+        </h2>
+        <br>
+        <button onClick="window.location.href=window.location.href">Új számolás</button>
+        </center>
+    </div>
+</body>
